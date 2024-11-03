@@ -1,0 +1,39 @@
+pipeline:
+  name: python
+  identifier: python
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.mygit
+        repoName: python
+        build: <+input>
+  stages:
+    - stage:
+        name: python_build
+        identifier: python_build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Bash
+                    command: |-
+                      python -m venv venv
+                      source venv/bin/activate
+                      pip install -r requirements.txt
+                      python setup.py sdist bdist_wheel
