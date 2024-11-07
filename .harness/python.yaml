@@ -38,6 +38,7 @@ pipeline:
                       pip install -r requirements.txt
                       python setup.py sdist
                       ls dist/
+                      tar -cvzf dist/dronedemo-1.0.tar.gz ./dronedemo
     - stage:
         name: Upload Tar to Artifactory
         identifier: Upload_Tar_to_Artifactory
