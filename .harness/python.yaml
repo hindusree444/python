@@ -38,6 +38,13 @@ pipeline:
                       pip install -r requirements.txt
                       python setup.py sdist
                       ls dist/
+              - step:
+                  type: Run
+                  name: List Files in Workspace
+                  identifier: List_Files_in_Workspace
+                  spec:
+                    shell: Bash
+                    command: ls -R /harness/workspace
     - stage:
         name: Upload Tar to Artifactory
         identifier: Upload_Tar_to_Artifactory
