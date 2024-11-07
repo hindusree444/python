@@ -45,7 +45,7 @@ pipeline:
                   identifier: Run_2
                   spec:
                     shell: Bash
-                    command: ls -lR /workspace
+                    command: ls -l
     - stage:
         name: Upload Tar to Artifactory
         identifier: Upload_Tar_to_Artifactory
