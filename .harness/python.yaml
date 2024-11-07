@@ -60,5 +60,5 @@ pipeline:
                   spec:
                     connectorRef: account.myartifactory
                     target: /my-artifact-1.0.0.tar
-                    sourcePath: /dist
+                    sourcePath: /dist/dronedemo-1.0.tar.gz
                   description: to upload tar files to Jfrog antifactory
