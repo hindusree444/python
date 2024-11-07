@@ -38,3 +38,27 @@ pipeline:
                       pip install -r requirements.txt
                       python setup.py sdist
                       ls dist/
+    - stage:
+        name: Upload Tar to Artifactory
+        identifier: Upload_Tar_to_Artifactory
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: ArtifactoryUpload
+                  name: ArtifactoryUpload_1
+                  identifier: ArtifactoryUpload_1
+                  spec:
+                    connectorRef: account.myartifactory
+                    target: /my-artifact-1.0.0.tar
+                    sourcePath: /dist
+                  description: to upload tar files to Jfrog antifactory
