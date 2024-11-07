@@ -37,7 +37,7 @@ pipeline:
                       source venv/bin/activate
                       pip install -r requirements.txt
                       python setup.py sdist
-                      ls dist/
+                      mkdir -p dist 
                       tar -cvzf dist/dronedemo-1.0.tar.gz ./dronedemo
               - step:
                   type: Run
@@ -45,7 +45,7 @@ pipeline:
                   identifier: Run_2
                   spec:
                     shell: Bash
-                    command: ls -lR /harness/workspace/dist
+                    command: ls -lR /harness/workspace
     - stage:
         name: Upload Tar to Artifactory
         identifier: Upload_Tar_to_Artifactory
