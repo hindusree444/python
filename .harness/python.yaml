@@ -44,12 +44,12 @@ pipeline:
                   spec:
                     shell: Bash
                     command: |-
-                      pwd
+                      ls dist/
                       ls -l dist/dronedemo-1.0.tar.gz
                       chmod +r dist/dronedemo-1.0.tar.gz
                       chmod 644 dist/dronedemo-1.0.tar.gz
                       cd dist/
-                      realpath dist/dronedemo-1.0.tar.gz
+                      realpath/harness/dist/dronedemo-1.0.tar.gz.
                       pwd
     - stage:
         name: upload
