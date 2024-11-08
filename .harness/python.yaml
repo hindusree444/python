@@ -43,7 +43,7 @@ pipeline:
                   identifier: Run_2
                   spec:
                     shell: Bash
-                    command: ls dist/
+                    command: ls -l dist/
     - stage:
         name: Upload Tar to Artifactory
         identifier: Upload_Tar_to_Artifactory
