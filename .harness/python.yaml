@@ -68,6 +68,6 @@ pipeline:
                   spec:
                     shell: Bash
                     command: |-
-                      curl -u "${secrets.ARTIFACTORY_USER}:${secrets.ARTIFACTORY_API_KEY}" \
+                      set -e; curl -u "{{secrets.ARTIFACTORY_USER}}:{{secrets.ARTIFACTORY_API_KEY}}" \
                         -T "dist/dronedemo-1.0.tar.gz" \
                         "https://hindusree444.jfrog.io/artifactory/harnessarti-generic-local/my-path/dronedemo-1.0.tar.gz"
