@@ -62,11 +62,12 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: ArtifactoryUpload
-                  name: ArtifactoryUpload_1
-                  identifier: ArtifactoryUpload_1
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
                   spec:
-                    connectorRef: account.myartifactory
-                    target: /my-artifact-1.0.0.tar
-                    sourcePath: dist/dronedemo-1.0.tar.gz
-                  description: to upload tar files to Jfrog antifactory
+                    shell: Bash
+                    command: |-
+                      curl -u "${secrets.ARTIFACTORY_USER}:${secrets.ARTIFACTORY_API_KEY}" \
+                        -T "dist/dronedemo-1.0.tar.gz" \
+                        "https://hindusree444.jfrog.io/artifactory/harnessarti-generic-local/my-path/dronedemo-1.0.tar.gz"
