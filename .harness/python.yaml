@@ -50,8 +50,8 @@ pipeline:
                       cd dist/
                       pwd
     - stage:
-        name: Upload Tar to Artifactory
-        identifier: Upload_Tar_to_Artifactory
+        name: upload
+        identifier: upload
         description: ""
         type: CI
         spec:
@@ -65,12 +65,10 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
+                  type: ArtifactoryUpload
+                  name: ArtifactoryUpload_1
+                  identifier: ArtifactoryUpload_1
                   spec:
-                    shell: Bash
-                    command: |-
-                      curl -v -u "{{secrets.ARTIFACTORY_USER}}:{{secrets.ARTIFACTORY_API_KEY}}" \
-                        -T "dist/dronedemo-1.0.tar.gz" \
-                        "https://hindusree444.jfrog.io/artifactory/harnessarti-generic-local/my-path/dronedemo-1.0.tar.gz"
+                    connectorRef: account.myartifactory
+                    target: myartifacts
+                    sourcePath: dist/dronedemo-1.0.tar.gz
