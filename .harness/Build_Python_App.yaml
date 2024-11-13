@@ -12,8 +12,8 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: build python
-        identifier: build_python
+        name: Build and Test
+        identifier: Build_and_Test
         description: ""
         type: CI
         spec:
@@ -28,16 +28,27 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Build Python App
-                  identifier: Build_Python_App
+                  name: Run_1
+                  identifier: Run_1
                   spec:
-                    shell: Sh
+                    shell: Bash
                     command: |-
-                      echo "Welcome to Harness CI"
-                              python -m pip install --upgrade pip
-                              pip install --user
-                              pip install virtualenv    
-                              virtualenv venv
-                              source venv/bin/activate
-                              . venv/bin/activate
-                              pip install -r requirements.txt
+                      pip install --upgrade pip
+                      pip install -r requirements.txt
+                      pip install -r test-requirements.txt
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.dockerregistry
+                    repo: hindusreedunaboyina/python
+                    tags:
+                      - latest
+              - step:
+                  type: Run
+                  name: run tests
+                  identifier: run_tests
+                  spec:
+                    shell: Bash
+                    command: pytest tests/
