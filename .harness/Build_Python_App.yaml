@@ -36,4 +36,8 @@ pipeline:
                       echo "Welcome to Harness CI"
                               python -m pip install --upgrade pip
                               pip install --user
-                              if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+                              pip install virtualenv    
+                              virtualenv venv
+                              source venv/bin/activate
+                              . venv/bin/activate
+                              pip install -r requirements.txt
