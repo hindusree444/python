@@ -31,10 +31,13 @@ pipeline:
                   name: Build Python App
                   identifier: Build_Python_App
                   spec:
-                    shell: Sh
+                    shell: Bash
                     command: |-
                       echo "Welcome to Harness CI"
                               python -m pip install --upgrade pip
                               python3 -m venv venv
+                              virtualenv venv
                               source venv/bin/activate
+                              . venv/bin/activate
                               pip install -r requirements.txt
+                              pip install virtualenv
