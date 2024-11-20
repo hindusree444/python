@@ -28,6 +28,17 @@ pipeline:
             steps:
               - step:
                   type: Run
+                  name: Virtual-Environment-Setup
+                  identifier: VirtualEnvironmentSetup
+                  spec:
+                    shell: Bash
+                    command: |-
+                      pip install virtualenv
+                      python3 -m venv venv
+                      source venv/bin/activate
+                  description: setting up virtual environment locally for python application
+              - step:
+                  type: Run
                   name: Install Dependencies
                   identifier: Install_Dependencies
                   spec:
