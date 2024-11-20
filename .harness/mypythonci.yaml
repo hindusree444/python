@@ -46,7 +46,9 @@ pipeline:
                     command: |-
                       pip install -r requirements.txt
                       pip install -r test-requirements.txt
-                      pip show pytest || echo "pytest is not installed"
+                      which python
+                      which pip
+                      pip show pytest
     - stage:
         name: Test
         identifier: Test
