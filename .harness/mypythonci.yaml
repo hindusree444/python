@@ -1,0 +1,35 @@
+pipeline:
+  name: my-python-ci
+  identifier: mypythonci
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.mygit
+        repoName: python
+        build: <+input>
+  stages:
+    - stage:
+        name: Build and Setup Environment
+        identifier: Build_and_Setup_Environment
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Install Dependencies
+                  identifier: Install_Dependencies
+                  spec:
+                    shell: Bash
+                    command: pip install -r requirements.txt
