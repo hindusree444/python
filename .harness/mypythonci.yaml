@@ -68,4 +68,4 @@ pipeline:
                   identifier: testing
                   spec:
                     shell: Bash
-                    command: pytest --maxfail=1 --disable-warnings -q
+                    command: pytest tests/
