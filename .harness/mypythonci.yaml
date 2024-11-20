@@ -33,7 +33,6 @@ pipeline:
                   spec:
                     shell: Bash
                     command: |-
-                      rm -rf venv
                       pip install virtualenv
                       python3 -m venv venv
                       source venv/bin/activate
