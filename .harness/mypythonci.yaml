@@ -36,7 +36,6 @@ pipeline:
                       pip install virtualenv
                       python3 -m venv venv
                       source venv/bin/activate
-                      pytest --maxfail=1 --disable-warnings -q
                   description: setting up virtual environment locally for python application
               - step:
                   type: Run
@@ -44,4 +43,6 @@ pipeline:
                   identifier: Install_Dependencies
                   spec:
                     shell: Bash
-                    command: pip install -r requirements.txt
+                    command: |-
+                      pip install -r requirements.txt
+                      pip install -r test-requirements.txt
