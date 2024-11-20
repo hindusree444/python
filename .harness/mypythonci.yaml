@@ -33,6 +33,7 @@ pipeline:
                   spec:
                     shell: Bash
                     command: |-
+                      rm -rf venv
                       pip install virtualenv
                       python3 -m venv venv
                       source venv/bin/activate
@@ -46,9 +47,6 @@ pipeline:
                     command: |-
                       pip install -r requirements.txt
                       pip install -r test-requirements.txt
-                      which python
-                      which pip
-                      pip show pytest
     - stage:
         name: Test
         identifier: Test
@@ -70,6 +68,4 @@ pipeline:
                   identifier: testing
                   spec:
                     shell: Bash
-                    command: |-
-                      source venv/bin/activate
-                      pytest --maxfail=1 --disable-warnings -q
+                    command: pytest --maxfail=1 --disable-warnings -q
