@@ -36,7 +36,7 @@ pipeline:
                       pip install virtualenv
                       python3 -m venv venv
                       source venv/bin/activate
-                      flask8 .
+                      pytest --maxfail=1 --disable-warnings -q
                   description: setting up virtual environment locally for python application
               - step:
                   type: Run
