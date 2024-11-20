@@ -67,5 +67,7 @@ pipeline:
                   name: testing
                   identifier: testing
                   spec:
-                    shell: Sh
-                    command: pytest test/
+                    shell: Bash
+                    command: |-
+                      source venv/bin/activate
+                      pytest --maxfail=1 --disable-warnings -q
