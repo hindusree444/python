@@ -46,3 +46,25 @@ pipeline:
                     command: |-
                       pip install -r requirements.txt
                       pip install -r test-requirements.txt
+    - stage:
+        name: Test
+        identifier: Test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: testing
+                  identifier: testing
+                  spec:
+                    shell: Sh
+                    command: pytest test/
